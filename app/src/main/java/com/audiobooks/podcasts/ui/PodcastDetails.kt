@@ -2,6 +2,8 @@ package com.audiobooks.podcasts.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.audiobooks.podcasts.R
@@ -37,11 +40,12 @@ fun PodcastDetailsScreen(item: PodcastUiModel, onBackPressed: () -> Unit) {
         LazyColumn(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.padding(25.dp)
+            modifier = Modifier.padding(10.dp)
         ) {
             item {
                 Text(
                     text = item.title, fontSize = 20.sp,
+                    textAlign = TextAlign.Center,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold
                 )
@@ -54,8 +58,11 @@ fun PodcastDetailsScreen(item: PodcastUiModel, onBackPressed: () -> Unit) {
                 Button(
                     modifier = Modifier
                         .width(110.dp)
+                        .height(57.dp)
                         .padding(top = 15.dp),
+                    contentPadding = PaddingValues(0.dp),
                     onClick = {
+                        // I only update label here. No db, sharedPref operations needed.
                         favoriteState.value = !favoriteState.value
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.button_color)),
@@ -68,7 +75,8 @@ fun PodcastDetailsScreen(item: PodcastUiModel, onBackPressed: () -> Unit) {
                     )
                 }
                 Text(
-                    modifier = Modifier.padding(top = 10.dp),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 18.dp),
                     text = item.description, fontSize = 12.sp,
                     color = Color.Gray
                 )

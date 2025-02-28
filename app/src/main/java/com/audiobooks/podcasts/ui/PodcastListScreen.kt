@@ -38,41 +38,39 @@ private fun PodcastListUI(
     onShowDetails: (podcast: PodcastUiModel) -> Unit
 ) {
     if (podcastData.isNotEmpty()) {
-        LazyColumnUI(items = arrayListOf<@Composable () -> Unit>().apply {
-            for (item in podcastData) {
-                add {
-                    Row(
-                        horizontalArrangement = Arrangement.Start,
-                        modifier = Modifier
-                            .padding(10.dp)
-                            .clickable {
-                                onShowDetails(item)
-                            }
-                    ) {
-                        ImageWithRoundedCorners(item.image, 80.dp)
-                        Column(
-                            horizontalAlignment = Alignment.Start,
-                            verticalArrangement = Arrangement.Top,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)
+        LazyColumnUI(
+            items = arrayListOf<@Composable () -> Unit>().apply {
+                for (item in podcastData) {
+                    add {
+                        Row(
+                            horizontalArrangement = Arrangement.Start,
+                            modifier = Modifier
+                                .padding(10.dp)
+                                .clickable {
+                                    onShowDetails(item)
+                                }
                         ) {
-                            Text(
-                                text = item.title, fontSize = 14.sp,
-                                color = Color.Black,
-                                fontWeight = FontWeight.Bold
-                            )
-                            Text(
-                                text = item.publisher, fontSize = 12.sp,
-                                color = Color.Gray
-                            )
+                            ImageWithRoundedCorners(item.image, 80.dp)
+                            Column(
+                                horizontalAlignment = Alignment.Start,
+                                verticalArrangement = Arrangement.Top,
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)
+                            ) {
+                                Text(
+                                    text = item.title, fontSize = 14.sp,
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    text = item.publisher, fontSize = 12.sp,
+                                    color = Color.Gray
+                                )
+                            }
                         }
                     }
                 }
-            }
-        })
+            })
     } else {
         // show empty view.
     }
 }
-
-
-

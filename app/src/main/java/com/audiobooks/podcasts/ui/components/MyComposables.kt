@@ -44,7 +44,7 @@ fun LazyColumnUI(
         modifier = Modifier
             .fillMaxSize()
             .padding(start = 15.dp)
-            .background(Color.White)
+            .background(Color.White),
     ) {
         stickyHeader {
             Row(
