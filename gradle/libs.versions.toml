@@ -10,12 +10,15 @@ activityCompose = "1.10.0"
 composeBom = "2025.02.00"
 composeNavigation = "2.8.7"
 kotlinxSerializationJson = "1.7.3"
+lifecycleViewmodelCompose = "1.0.0-alpha07"
 retrofit = "2.11.0"
 androidxLifecycle = "2.8.7"
 coil = "2.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewmodel-compose-v100alpha07 = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

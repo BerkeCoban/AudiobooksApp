@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.audiobooks.podcasts.model.Podcast
+import com.audiobooks.podcasts.model.PodcastUiModel
 import com.audiobooks.podcasts.navigation.CustomNavType
 import com.audiobooks.podcasts.navigation.PodcastDetails
 import com.audiobooks.podcasts.navigation.PodcastList
@@ -36,16 +36,20 @@ class MainActivity : ComponentActivity() {
                     composable<PodcastList> {
                         PodcastListScreen(
                             onShowDetails = { podcast ->
-                                navController.navigate(PodcastDetails(podcast))
+                                navController.navigate(PodcastDetails(podcast)) {
+                                    restoreState = true
+                                    launchSingleTop = true
+                                }
                             }
                         )
                     }
                     composable<PodcastDetails>(
-                        typeMap = mapOf(typeOf<Podcast>() to CustomNavType.PodcastType)
+                        typeMap = mapOf(typeOf<PodcastUiModel>() to CustomNavType.PodcastType)
                     ) { backStackEntry ->
-
                         val route = backStackEntry.toRoute<PodcastDetails>()
-                        PodcastDetailsScreen(route.podcast)
+                        PodcastDetailsScreen(route.podcast) {
+                            onBackPressedDispatcher.onBackPressed()
+                        }
                     }
                 }
             }

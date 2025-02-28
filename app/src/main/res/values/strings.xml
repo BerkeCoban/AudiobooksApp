@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Podcasts</string>
+    <string name="podcast_list_title">Podcasts</string>
+    <string name="podcast_detail_back">Back</string>
+
+    <string name="podcast_detail_favourite">Favourite</string>
+    <string name="podcast_detail_favourited">Favourited</string>
 </resources>

@@ -53,6 +53,8 @@ dependencies {
     implementation(libs.retrofitConverterGson)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.coil.compose)
+    implementation (libs.androidx.lifecycle.livedata)
+    implementation (libs.androidx.lifecycle.viewmodel.compose.v100alpha07)
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
